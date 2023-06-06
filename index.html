@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Shop</title>
+  <style>
+    /* CSS Styles */
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      
+    }
+
+    .cart {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        flex-direction: column;
+    }
+    img{
+            height: 200px;
+            width: 200px;
+    }   
+    #product-list{
+        flex-direction: row;+
+    }
+  </style>
+</head>
+<body>
+  <h1>Online Shop</h1>
+    <div class="grid">
+
+        <div id="product-list">
+          <div class="product">
+            <h2>Pants</h2>
+            <img src="https://static-01.daraz.pk/p/95904c7458de5f39ac898784ac1e48bf.jpg" alt="" >
+            <p>Price: $10</p>
+            <button onclick="addToCart('Pants')">Add to Cart</button>
+          </div>
+      
+          <div class="product">
+            <h2>Shirts</h2>
+            <img src="https://cdn.shopify.com/s/files/1/0419/6171/7922/collections/Men-s-Casual-Shirts-Casual-Shirts-For-Men-at-Charcoal-Clothing-161_1200x1200.webp?v=1678628589" alt="">
+            <p>Price: $20</p>
+            <button onclick="addToCart('Shirts')">Add to Cart</button>
+          </div>
+      
+          <div class="product">
+            <h2>Glasses</h2>
+            <img src="https://static-01.daraz.pk/p/44ae465476b2b79e8c1f874e083b3378.jpg" alt="">
+            <p>Price: $30</p>
+            <button onclick="addToCart('Glasses')">Add to Cart</button>
+          </div>
+        </div>
+    </div>
+
+  <hr>
+
+  <div id="cart">
+    <h2>Cart</h2>
+    <div class="cart">
+      <ul id="cart-items">
+      </ul>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript functionality
+    var cartItems = [];
+
+    function addToCart(productName) {
+      cartItems.push(productName);
+      updateCart();
+    }
+
+    function updateCart() {
+      var cartElement = document.getElementById("cart-items");
+      cartElement.innerHTML = "";
+
+      for (var i = 0; i < cartItems.length; i++) {
+        var li = document.createElement("li");
+        li.appendChild(document.createTextNode(cartItems[i]));
+        cartElement.appendChild(li);
+      }
+    }
+
+    function checkout() {
+      alert("Thank you for your purchase!");
+      cartItems = [];
+      updateCart();
+    }
+  </script>
+</body>
+</html>
